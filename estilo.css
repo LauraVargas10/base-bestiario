@@ -1,67 +1,275 @@
-@import url('https://fonts.googleapis.com/css2?family=Barriecito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@500;600;700&family=Karla:wght@400;500;600;700&display=swap');
 
+:root {
+  color-scheme: dark;
+  font-family: "Karla", sans-serif;
+  color: #f2efe9;
+  background: #17191b;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --rojo: #d34b3f;
+  --papel: #f2efe9;
+  --muted: #a4a4a0;
+}
 
-html {
+* {
   box-sizing: border-box;
-  height: 100%;
 }
 
-html,
 body {
+  min-width: 320px;
+  min-height: 100vh;
   margin: 0;
-  padding: 0;
+  background-image: linear-gradient(115deg, transparent 49.9%, #ffffff08 50%, transparent 50.1%),
+    repeating-linear-gradient(0deg, #ffffff05 0 1px, transparent 1px 72px);
+  background-size: 100% 100%, 100% 72px;
 }
 
-::selection {
-  background-color: #30cac073;
-  color: #130808;
-}
-
-h2 {
-  font-size: 1.1em;
-  
-}
-
-a, a:active, a:visited, a:hover {
-  color: rgb(193, 120, 199);
-  cursor: pointer;
-  text-decoration: none;
+button {
+  font: inherit;
 }
 
 #contenedorGeneral {
-  margin: auto 1em;
-  text-align: center;
+  width: min(100% - 48px, 1040px);
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.encabezado {
+  padding: 34px 0 22px;
+  border-bottom: 1px solid #ffffff30;
+}
+
+.sello,
+.sobrelinea,
+.etiqueta-resultado,
+footer {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.sello {
+  margin: 0;
+  color: var(--muted);
+}
+
+.sello span,
+footer span {
+  padding: 0 8px;
+  color: var(--rojo);
 }
 
 #tituloPagina {
-  margin-top: 1em;
-  margin-bottom: 0;
-  margin-bottom: 0.5em;
-  font-family: "Barriecito", system-ui;
-  font-weight: 400;
-  font-style: normal;
+  margin: 10px 0 0;
+  color: var(--papel);
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 32px;
+  font-weight: 600;
 }
 
-#tituloPagina:hover {
-  color: pink;
-  cursor: pointer;
+.consulta {
+  width: min(100%, 680px);
+  margin: auto auto 36px;
+  padding: 70px 0 56px;
+  text-align: center;
 }
 
-#contenedorPersonaje {
+.sobrelinea {
+  margin: 0 0 14px;
+  color: var(--rojo);
+}
+
+.consulta h2,
+.detalle-resultado h2 {
+  margin: 0;
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 38px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.frase {
+  margin: 15px 0 30px;
+  color: var(--muted);
+}
+
+.acciones {
   display: flex;
-  flex-direction: column;
-  align-items: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
 }
 
-.imagen {
-  height: 170px;
-  width: 150px;
-  margin: 0em auto;
+.acciones button {
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--rojo);
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease;
 }
 
 #boton {
-  font-size: 0.9em;
-  background-color:  rgb(193, 120, 199);
+  background: var(--rojo);
   color: white;
-  cursor: pointer;
+  font-weight: 700;
+}
+
+#boton:hover {
+  border-color: #ed7163;
+  background: #ed7163;
+}
+
+.boton-secundario {
+  background: transparent;
+  color: var(--papel);
+}
+
+.boton-secundario:hover {
+  background: #ffffff12;
+}
+
+.acciones button:focus-visible {
+  outline: 2px solid var(--papel);
+  outline-offset: 4px;
+}
+
+.resultado {
+  --acento: #f2efe9;
+  display: grid;
+  grid-template-columns: minmax(160px, 260px) 1fr;
+  align-items: center;
+  gap: clamp(24px, 6vw, 72px);
+  width: min(100%, 760px);
+  min-height: 270px;
+  margin: 0 auto auto;
+  padding: 30px clamp(18px, 5vw, 54px);
+  border-top: 3px solid var(--acento);
+  background: #222528;
+  animation: revelar 420ms ease both;
+}
+
+.resultado[hidden] {
+  display: none;
+}
+
+.resultado--cordialidad {
+  --acento: #e2bd54;
+}
+
+.resultado--abnegacion {
+  --acento: #a7aaa8;
+}
+
+.resultado--erudicion {
+  --acento: #518dcc;
+}
+
+.resultado--osadia {
+  --acento: #d34b3f;
+}
+
+.resultado--verdad {
+  --acento: #d6d5d0;
+}
+
+.resultado--divergente {
+  --acento: #d34b3f;
+  border-image: linear-gradient(90deg, #e2bd54, #518dcc, #d34b3f, #d6d5d0) 1;
+}
+
+.imagen {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: contain;
+}
+
+.etiqueta-resultado {
+  margin: 0 0 12px;
+  color: var(--acento);
+}
+
+.detalle-resultado h2 {
+  font-size: 28px;
+}
+
+.descripcion-resultado {
+  margin: 14px 0 0;
+  color: #c4c2bd;
+  line-height: 1.6;
+}
+
+.virtud-resultado {
+  margin: 12px 0 0;
+  color: var(--acento);
+  font-weight: 700;
+}
+
+.principio-resultado {
+  margin: 14px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--acento);
+  color: var(--papel);
+  font-family: "Alegreya", Georgia, serif;
+  font-size: 19px;
+  font-style: italic;
+}
+
+footer {
+  padding: 28px 0;
+  color: #858683;
+  text-align: center;
+}
+
+@keyframes revelar {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  #contenedorGeneral {
+    width: min(100% - 32px, 440px);
+  }
+
+  .encabezado {
+    padding-top: 24px;
+  }
+
+  .consulta {
+    margin-bottom: 28px;
+    padding: 60px 0 38px;
+  }
+
+  .consulta h2 {
+    font-size: 32px;
+  }
+
+  .acciones {
+    flex-direction: column;
+  }
+
+  .resultado {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 24px;
+    text-align: center;
+  }
+
+  .imagen {
+    height: 180px;
+  }
+
+  .detalle-resultado h2 {
+    font-size: 24px;
+  }
 }

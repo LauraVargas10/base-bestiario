@@ -8,35 +8,45 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/sitio.webmanifest" />
 
-    <title>..:: Collage ::..</title>
-    <!-- <meta name="description" content="Descripción del sitio...." /> -->
+    <meta name="theme-color" content="#17191b" />
+    <meta name="description" content="Consulta el oráculo y descubre tu facción." />
+    <title>El oráculo de las facciones</title>
 
     <!-- OpenGraph -->
     <meta property="og:locale" content="es_CO" />
     <meta property="og:type" content="website" />
-    <!-- Esto importa la hoja de estilos de la página -->
-    <link rel="stylesheet" href="estilo.css" />​
+    <link rel="stylesheet" href="estilo.css" />
 
-    <!-- Esto importa el archivo de JavaScript de la página -->
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div id="contenedorGeneral">
-      <h1 id="tituloPagina">
-        <a href="https://en.wikipedia.org/wiki/Bestiario" target="_blank"
-          >Bestiario / Collage</a
-        >
-      </h1>
-      <div id="contenedorPersonaje">
-        <img
-          class="imagen"
-          id="faccion"
-          src=""
-          alt="Facción aleatoria"
-        />
-      </div>
+    <main id="contenedorGeneral">
+      <header class="encabezado">
+        <h1 id="tituloPagina">El oráculo</h1>
+      </header>
 
-      <button id="boton">Cambiar facción</button>
-    </div>
+      <section class="consulta" aria-labelledby="pregunta">
+        <p class="sobrelinea">La prueba te espera</p>
+        <h2 id="pregunta">¿Qué facción eres?</h2>
+        <p class="frase">Una decisión puede cambiarlo todo.</p>
+        <div class="acciones">
+          <button id="boton" type="button">Revelar mi facción</button>
+          <button id="botonDivergente" class="boton-secundario" type="button">
+            ¿Qué tipo de Divergente soy?
+          </button>
+        </div>
+      </section>
+
+      <section id="resultado" class="resultado" aria-live="polite" hidden>
+        <img class="imagen" id="faccion" src="" alt="" />
+        <div class="detalle-resultado">
+          <p id="etiquetaResultado" class="etiqueta-resultado"></p>
+          <h2 id="nombreResultado"></h2>
+          <p id="virtudResultado" class="virtud-resultado" hidden></p>
+          <p id="descripcionResultado" class="descripcion-resultado"></p>
+          <p id="principioResultado" class="principio-resultado" hidden></p>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
